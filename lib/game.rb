@@ -16,9 +16,14 @@ class Game
     @board = board
   end
 
+#  def current_player
+#    player_1.token == board.token ? player_1 : player_2
+#  end
+
   def current_player
-    player_1.token == board.token ? player_1 : player_2
+    @board.turn_count % 2 == 0 ? @player_1 : @player_2
   end
+
 
   def over?
     board.full? ? true : false
