@@ -58,6 +58,7 @@ class Game
       puts "\n\n"
     end
   end
+
   def play
     while !over?
       turn
@@ -80,5 +81,5 @@ class Game
   def draw?
     @board.full? && !won?
   end
-  
+
 end
