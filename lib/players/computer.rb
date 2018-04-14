@@ -1,11 +1,11 @@
-module Players
+module Computers
 
-  class Human < Player
+  class Computer < Player
 
-    def move(board)
-      puts "Please enter a number (1-9):"
-      ui = gets.strip
-    end
+#    def move(board)
+#      puts "Please enter a number (1-9):"
+#      ui = gets.strip
+#    end
 
   end
 
