@@ -26,8 +26,8 @@ class Game
 
   def won?
       WIN_COMBINATIONS.any? do |combo|
-        if @board.cells[combo[0]] != " " && 
-           @board.cells[combo[0]] == @board.cells[combo[1]] && 
+        if @board.cells[combo[0]] != " " &&
+           @board.cells[combo[0]] == @board.cells[combo[1]] &&
            @board.cells[combo[1]] == @board.cells[combo[2]]
           return [combo[0],combo[1],combo[2]]
         end
@@ -47,6 +47,10 @@ class Game
   def draw?
     board.full? && !won?
   end
+
+#  def draw?
+#    @board.full? && !won?
+#  end
 
   def winner
     #binding.pry
@@ -77,10 +81,6 @@ class Game
     elsif draw?
       puts "Cat's Game!"
     end
-  end
-
-  def draw?
-    @board.full? && !won?
   end
 
 end
