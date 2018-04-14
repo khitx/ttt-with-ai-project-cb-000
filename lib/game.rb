@@ -26,14 +26,23 @@ class Game
 
   def won?
       WIN_COMBINATIONS.any? do |combo|
-        #binding.pry
-#        if board.taken?(combo[0]-1) && @board.cells[combo[0]] == @board.cells[combo[1]] && @board.cells[combo[1]] == @board.cells[combo[2]]
-        if @board.cells[combo[0]] != " " && @board.cells[combo[0]] == @board.cells[combo[1]] && @board.cells[combo[1]] == @board.cells[combo[2]]
+        if @board.cells[combo[0]] != " " && 
+           @board.cells[combo[0]] == @board.cells[combo[1]] && 
+           @board.cells[combo[1]] == @board.cells[combo[2]]
           return [combo[0],combo[1],combo[2]]
         end
       end
       return nil
   end
+
+  #def won?
+  #  WIN_COMBINATIONS.detect do |combo|
+  #    @board.cells[combo[0]] == @board.cells[combo[1]] &&
+  #    @board.cells[combo[1]] == @board.cells[combo[2]] &&
+  #    @board.taken?(combo[0]+1)
+  #  end
+  #end
+
 
   def draw?
     board.full? && !won?
@@ -67,14 +76,6 @@ class Game
       puts "Congratulations #{winner}!"
     elsif draw?
       puts "Cat's Game!"
-    end
-  end
-
-  def won?
-    WIN_COMBINATIONS.detect do |combo|
-      @board.cells[combo[0]] == @board.cells[combo[1]] &&
-      @board.cells[combo[1]] == @board.cells[combo[2]] &&
-      @board.taken?(combo[0]+1)
     end
   end
 
