@@ -9,4 +9,8 @@ module Players
 
   end
 
+  class Computer < Player
+    
+  end
+
 end
