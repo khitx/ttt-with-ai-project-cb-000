@@ -16,13 +16,13 @@ class Game
     @board = board
   end
 
-#  def current_player
-#    player_1.token == board.token ? player_1 : player_2
-#  end
-
   def current_player
-    @board.turn_count % 2 == 0 ? @player_1 : @player_2
+    player_1.token == board.token ? player_1 : player_2
   end
+
+#  def current_player
+#    @board.turn_count % 2 == 0 ? @player_1 : @player_2
+#  end
 
 #  def over?
 #    board.full? ? true : false
@@ -32,25 +32,24 @@ class Game
     won? || draw?
   end
 
-  #def won?
-  #    WIN_COMBINATIONS.any? do |combo|
-  #      if @board.cells[combo[0]] != " " &&
-  #         @board.cells[combo[0]] == @board.cells[combo[1]] &&
-  #         @board.cells[combo[1]] == @board.cells[combo[2]]
-  #        return [combo[0],combo[1],combo[2]]
-  #      end
-  #    end
-  #    return nil
-  #end
-
   def won?
-    WIN_COMBINATIONS.detect do |combo|
-      @board.cells[combo[0]] == @board.cells[combo[1]] &&
-      @board.cells[combo[1]] == @board.cells[combo[2]] &&
-      @board.taken?(combo[0]+1)
-    end
+      WIN_COMBINATIONS.any? do |combo|
+        if @board.cells[combo[0]] != " " &&
+           @board.cells[combo[0]] == @board.cells[combo[1]] &&
+           @board.cells[combo[1]] == @board.cells[combo[2]]
+          return [combo[0],combo[1],combo[2]]
+        end
+      end
+      return nil
   end
 
+#  def won?
+#    WIN_COMBINATIONS.detect do |combo|
+#      @board.cells[combo[0]] == @board.cells[combo[1]] &&
+#      @board.cells[combo[1]] == @board.cells[combo[2]] &&
+#      @board.taken?(combo[0]+1)
+#    end
+#  end
 
 #  def draw?
 #    board.full? && !won?
