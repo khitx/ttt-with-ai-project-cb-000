@@ -5,7 +5,6 @@ module Players
     def move(board)
       puts "Please enter a number (1-9):"
       ui = gets.strip
-      binding.pry
     end
 
   end
