@@ -24,24 +24,24 @@ class Game
     board.full? ? true : false
   end
 
-  def won?
-      WIN_COMBINATIONS.any? do |combo|
-        if @board.cells[combo[0]] != " " &&
-           @board.cells[combo[0]] == @board.cells[combo[1]] &&
-           @board.cells[combo[1]] == @board.cells[combo[2]]
-          return [combo[0],combo[1],combo[2]]
-        end
-      end
-      return nil
-  end
-
   #def won?
-  #  WIN_COMBINATIONS.detect do |combo|
-  #    @board.cells[combo[0]] == @board.cells[combo[1]] &&
-  #    @board.cells[combo[1]] == @board.cells[combo[2]] &&
-  #    @board.taken?(combo[0]+1)
-  #  end
+  #    WIN_COMBINATIONS.any? do |combo|
+  #      if @board.cells[combo[0]] != " " &&
+  #         @board.cells[combo[0]] == @board.cells[combo[1]] &&
+  #         @board.cells[combo[1]] == @board.cells[combo[2]]
+  #        return [combo[0],combo[1],combo[2]]
+  #      end
+  #    end
+  #    return nil
   #end
+
+  def won?
+    WIN_COMBINATIONS.detect do |combo|
+      @board.cells[combo[0]] == @board.cells[combo[1]] &&
+      @board.cells[combo[1]] == @board.cells[combo[2]] &&
+      @board.taken?(combo[0]+1)
+    end
+  end
 
 
   def draw?
